@@ -1,4 +1,8 @@
 
+from datetime import datetime
+now.datetime=datetime.now()
+
+
 class Account:
     def __init__(self,name,account_number):
         self.balance=0
@@ -6,7 +10,7 @@ class Account:
         self.account_number=account_number
         self.deposits = []
         self.withdrawals =[]
-        self.transaction=100
+        self.transaction=[]
         
         
     def deposit(self,amount):
@@ -18,14 +22,16 @@ class Account:
             return f"You have deposited {amount}. Your new balance is {self.balance}"  
 
     def withdraw(self,amount):
-        transaction=100
         if amount>self.balance:
              return f"Your balance is {self.balance}, you cannot withdraw the {amount}" 
         elif amount<=0:
             return f"Amount must be greater than zero" 
         else:
+            self.transaction_cost=100
+            self.balance-=amount+self.transaction_cost
+
             self.balance-=amount
-            self.balance-=transaction
+            self.balance-=self.transaction_cost
             self.withdrawals.append(amount)
             return f"you have withdrawn {amount} your balance is {self.balance}" 
     
